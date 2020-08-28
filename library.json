@@ -4,9 +4,9 @@
   "description": "This library implements the Firmata protocol as a set of plugins that can be used to create applications to remotely interface with an Arduino board.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/firmata/ConfigurableFirmata.git"
+    "url": "https://github.com/tedeler/ConfigurableFirmata.git"
   },
-  "version": "2.10.1",
+  "version": "2.10.1a",
   "exclude": [
     "extras",
     "test"
