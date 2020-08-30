@@ -22,7 +22,7 @@
  * Query using the REPORT_VERSION message.
  */
 #define FIRMATA_PROTOCOL_MAJOR_VERSION  2 // for non-compatible changes
-#define FIRMATA_PROTOCOL_MINOR_VERSION  6 // for backwards compatible changes
+#define FIRMATA_PROTOCOL_MINOR_VERSION  7 // for backwards compatible changes
 #define FIRMATA_PROTOCOL_BUGFIX_VERSION 0 // for bugfix releases
 
 /*
@@ -32,7 +32,7 @@
  * Query using the REPORT_FIRMWARE message.
  */
 #define FIRMATA_FIRMWARE_MAJOR_VERSION  2 // for non-compatible changes
-#define FIRMATA_FIRMWARE_MINOR_VERSION  10 // for backwards compatible changes
+#define FIRMATA_FIRMWARE_MINOR_VERSION  99 // for backwards compatible changes
 #define FIRMATA_FIRMWARE_BUGFIX_VERSION 1 // for bugfix releases
 
 // DEPRECATED as of ConfigurableFirmata v2.8.1.
@@ -73,7 +73,7 @@
 #define SERIAL_MESSAGE          0x60 // communicate with serial devices, including other boards
 #define ENCODER_DATA            0x61 // reply with encoders current positions
 #define ACCELSTEPPER_DATA       0x62 // control a stepper motor
-#define PULSECOUNTER_DATA       0x63 // reply with encoders current positions
+#define PULSECOUNTER_DATA       0x5B // reply with encoders current positions
 #define SERVO_CONFIG            0x70 // set max angle, minPulse, maxPulse, freq
 #define STRING_DATA             0x71 // a string message with 14-bits per char
 #define STEPPER_DATA            0x72 // control a stepper motor
