@@ -56,9 +56,19 @@ boolean SerialFirmata::handleSysex(byte command, byte argc, byte *argv)
       case SERIAL_CONFIG:
         {
           long baud = (long)argv[1] | ((long)argv[2] << 7) | ((long)argv[3] << 14);
+          uint16_t SerialMode = 0;
+
           serial_pins pins;
           lastAvailableBytes[portId] = 0;
           lastReceive[portId] = 0;
+
+          if(argc > 6) {
+              SerialMode = (long)argv[8-2] | ((long)argv[9-2] << 7) | ((long)argv[10-2] << 14);
+              sprintf(debugBuffer, "SerialConfig @%d mit 0x%04X", baud, SerialMode);
+          } else {
+              SerialMode = SERIAL_8N1;
+              sprintf(debugBuffer, "SerialConfig @%d (Standardmodus)", baud);
+          }
 // this ifdef will be removed once a command to enable RX buffering has been added to the protocol
 #if defined(FIRMATA_SERIAL_PORT_RX_BUFFERING)
           // 8N1 = 10 bits per char, max. 50 bits -> 50000 = 50bits * 1000ms/s
@@ -80,7 +90,7 @@ boolean SerialFirmata::handleSysex(byte command, byte argc, byte *argv)
                 // because all Arduino pins are set to OUTPUT by default in StandardFirmata.
                 pinMode(pins.rx, INPUT);
               }
-              ((HardwareSerial*)serialPort)->begin(baud);
+              ((HardwareSerial*)serialPort)->begin(baud, SerialMode);
             }
           } else {
 #if defined(SoftwareSerial_h)

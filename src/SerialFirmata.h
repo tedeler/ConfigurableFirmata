@@ -15,6 +15,8 @@
 #ifndef SerialFirmata_h
 #define SerialFirmata_h
 
+extern char debugBuffer[];
+
 #include <ConfigurableFirmata.h>
 #include "FirmataFeature.h"
 // SoftwareSerial is currently only supported for AVR-based boards and the Arduino 101.
